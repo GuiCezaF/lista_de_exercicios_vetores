@@ -3,7 +3,7 @@ Crie uma função que verifique se uma matriz é simétrica
 '''
 
 
-def is_symmetric(matriz: list) -> list:
+def is_symmetric(matriz: list) -> bool:
     num_linhas = len(matriz)
     num_colunas = len(matriz[0])
     if num_linhas != num_colunas:
