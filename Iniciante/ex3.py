@@ -3,7 +3,7 @@ Crie uma função que receba uma matriz e retorne a transposta dela
 '''
 
 
-def matriz_transposta(matriz):
+def matriz_transposta(matriz: list) -> list:
     if not matriz:
         return []
 
