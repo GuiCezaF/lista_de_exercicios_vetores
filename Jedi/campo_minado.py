@@ -7,7 +7,7 @@ Crie um campo minado em Python de tamanho personalizado.
 from random import randint
 
 
-def criar_campo_minado(linhas, colunas, num_minas):
+def criar_campo_minado(linhas: int, colunas: int, num_minas: int) -> list:
     campo = [['⬛' for _ in range(colunas)] for _ in range(linhas)]
 
     minas_colocadas = 0
@@ -21,7 +21,7 @@ def criar_campo_minado(linhas, colunas, num_minas):
     return campo
 
 
-def imprimir_campo(campo):
+def imprimir_campo(campo: list):
     for linha in campo:
         print(' '.join(linha))
 
