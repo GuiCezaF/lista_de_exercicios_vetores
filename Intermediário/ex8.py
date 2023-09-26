@@ -1,3 +1,8 @@
+'''
+Implemente uma função que retorne a matriz identidade de ordem n
+'''
+
+
 def matriz_identidade(n: int) -> list:
     if n <= 0:
         return 'Não é possível criar uma matriz identidade de ordem não positiva'
