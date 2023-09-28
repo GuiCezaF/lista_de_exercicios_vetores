@@ -3,32 +3,36 @@
 Crie um campo minado em Python de tamanho personalizado.
 '''
 
-
 from random import randint
 
-
-def criar_campo_minado(linhas: int, colunas: int, num_minas: int) -> list:
-    campo = [['⬛' for _ in range(colunas)] for _ in range(linhas)]
-
-    minas_colocadas = 0
-    while minas_colocadas < num_minas:
-        linha = randint(0, linhas - 1)
-        coluna = randint(0, colunas - 1)
-        if campo[linha][coluna] != '💣':
-            campo[linha][coluna] = '💣'
-            minas_colocadas += 1
-
-    return campo
+def criar_campo(tamanho: int) -> list:
+    campo_minado = []
+    for _ in range(tamanho):    
+        linha = []
+        bomba1 = randint(0, tamanho - 1)
+        bomba2 = randint(0, tamanho - 1)
+        for i in range(tamanho):
+            linha.append('@' if i == bomba1 or i == bomba2 else ' ')
+        campo_minado.append(linha)
+    
+    return campo_minado
 
 
-def imprimir_campo(campo: list):
-    for linha in campo:
-        print(' '.join(linha))
+def menu() -> int:
+    tamanho_matriz = 0
+    continua = True
+    while continua:
+        tamanho_matriz = int(input('Qual o tamanho do campo minado(acima de 5)? '))
+        continua = tamanho_matriz < 5
+        print('Tamanho inválido' if continua else '')
+    return tamanho_matriz
+
+def exibir(matriz: list) -> None:
+    for linha in matriz:
+        print(linha)
 
 
-linhas = int(input("Número de linhas: "))
-colunas = int(input("Número de colunas: "))
-num_minas = int(input("Número de minas: "))
 
-campo_minado = criar_campo_minado(linhas, colunas, num_minas)
-imprimir_campo(campo_minado)
+tamanho = menu()
+cm = criar_campo(tamanho)
+exibir(cm)
